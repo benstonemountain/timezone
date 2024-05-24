@@ -32,7 +32,7 @@
         <div class="city-info-description">Szélességi fok</div>
         <div class="city-info">{{ item.latitude }}</div>
       </div>
-      <button class="target-button">Ezt keresem</button>
+      <button class="target-button" (click)="onSendCoordination(item.longitude, item.latitude)">Ezt keresem</button>
     </div>
 
   </div>

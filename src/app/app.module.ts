@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CityComponent } from './components/city/city.component';
-import { TimezoneComponent } from './components/timezone/timezone.component';
+import { WeatherComponent } from './components/weather/weather.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     CityComponent,
-    TimezoneComponent
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

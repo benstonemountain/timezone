@@ -1,0 +1,19 @@
+
+
+<div *ngIf="weatherInfo">
+  <h3>Weather Information for {{ weatherInfo.name }}</h3>
+  <p>Temperature: {{ weatherInfo.main.temp}}°C</p>
+  <p>Feels Like: {{ weatherInfo.main.feels_like }}°C</p>
+  <p>Humidity: {{ weatherInfo.main.humidity}}%</p>
+  <p>Pressure: {{ weatherInfo.main.pressure }} hPa</p>
+  <p>Max Temperature: {{ weatherInfo.main.temp_max}}°C</p>
+  <p>Min Temperature: {{ weatherInfo.main.temp_min}}°C</p>
+  <p>Clouds: {{ weatherInfo.clouds.all }}%</p>
+  <p>Visibility: {{ weatherInfo.visibility }} meters</p>
+  <p>Wind Speed: {{convertWindSpeed(weatherInfo.wind.speed) }} km/h</p>
+  <p>Wind Direction: {{ weatherInfo.wind.deg }}°</p>
+  <p>Country: {{ weatherInfo.sys.country }}</p>
+  <p>Timezone: {{ getUtcOffsetString(weatherInfo.timezone) }}</p>
+  <p>Sunrise: {{ weatherInfo.sys.sunrise }}</p>
+  <p>Sunset: {{ weatherInfo.sys.sunset }}</p>
+</div>

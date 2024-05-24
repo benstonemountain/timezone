@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CityData } from '../../model/city-data';
+import { CityData } from '../../model/models.interface';
 
 @Component({
   selector: 'app-city',
@@ -12,6 +12,8 @@ export class CityComponent {
   textByUser: string  = "";
 
   @Output() sendUserText = new EventEmitter<string>();
+  @Output() sendLongAndLat = new EventEmitter<{long: number, lat: number}>();
+
   @Input() cityInfo: CityData[] | null = [];
 
   cityForm = this.formBuilder.group({
@@ -28,6 +30,14 @@ export class CityComponent {
       this.sendUserText.emit(cityControl);
     }
      
+  }
+
+  onSendCoordination(longitude: number, latitude: number, ) {
+    if(longitude && latitude) {
+      const coord = {long: longitude, lat: latitude};
+      this.sendLongAndLat.emit(coord);
+    }
+    
   }
 
 }

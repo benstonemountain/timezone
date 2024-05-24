@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { CityDataService } from '../../services/city-data.service';
 import { Observable } from 'rxjs';
-import { CityStateService } from '../../services/city-state.service';
-import { CityData } from '../../model/city-data';
+import { StateService } from '../../services/state.service';
+import { CityData, WeatherInfo } from '../../model/models.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +12,26 @@ import { CityData } from '../../model/city-data';
 export class HomeComponent {
 
   textFromUser: string = "";
-  cityInfosFromServer$!: Observable<CityData[] | null>;
+  longitudeAndLatitudeFromUser!: { long: number, lat: number };
 
-  constructor(private cityDataService: CityDataService, private cityStateService: CityStateService) {}
+  cityInfosFromServer$!: Observable<CityData[] | null>;
+  weatherInfoFromServer$!:Observable<WeatherInfo | null>;
+
+  constructor( private stateService: StateService) {}
 
   handleUserText(cityName: string) {
     this.textFromUser = cityName
-    console.log(this.textFromUser);
-    this.cityStateService.getCityInfos(this.textFromUser);    
-    this.cityInfosFromServer$ = this.cityStateService.cityInfos$;
-    
+    this.stateService.getCityInfos(this.textFromUser);    
+    this.cityInfosFromServer$ = this.stateService.cityInfos$;
   }
+
+  handleCoordination(coordinations: { long: number, lat: number }) {
+    this.longitudeAndLatitudeFromUser = coordinations;
+    const {long, lat} = this.longitudeAndLatitudeFromUser;
+    this.stateService.getWeatherData(long, lat);
+    this.weatherInfoFromServer$ = this.stateService.weatherInfo$;
+  }
+
+
 
 }

@@ -1,3 +1,9 @@
 <app-city (sendUserText)="handleUserText($event)"
-[cityInfo]="cityInfosFromServer$ | async">
+[cityInfo]="cityInfosFromServer$ | async"
+(sendLongAndLat)="handleCoordination($event)"
+>
 </app-city>
+
+<app-weather [weatherInfo]="weatherInfoFromServer$ | async"></app-weather>
+
+
