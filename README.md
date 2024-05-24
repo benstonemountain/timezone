@@ -16,7 +16,7 @@ ha megtörténik az API hívás, akkor megjelennek a kártyák a City komponensb
 
 -----
 
-A City-ből elküldöm a long és lat paramétereket a Home-ba
+Az adott kártyán lévő "Ezt keresem" gombra kattintva a City-ből elküldöm a long és lat paramétereket a Home-ba
 TimeZone komponens: itt fog megjelenni a time zone. 
 timeZoneData service: a Home-ból kapott lat és long paraméter alapján itt hívom meg a timezone API-t
 timeZoneState service: subscrition
