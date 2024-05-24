@@ -1,0 +1,40 @@
+<div class="city-wrap">
+  <form [formGroup]="cityForm">
+    <div class="inputs">
+      <label for="city-search">
+        Város:
+        <input type="text" id="city-search" formControlName="cityControl" />
+      </label>
+    </div>
+    <button (click)="oncitySearch()">Keres</button>
+  </form>
+
+  <div *ngIf="cityInfo && cityInfo.length > 0" class="city-infos-wrap">
+
+    <div *ngFor="let item of cityInfo" class="city-infos">
+      <div class="city-info-item">
+        <div class="city-info-description">Város </div>
+        <div class="city-info">{{ item.name }}</div>
+      </div>
+      <div class="city-info-item">
+        <div class="city-info-description">Ország </div>
+        <div class="city-info">{{ item.country }}</div>
+      </div>
+      <div class="city-info-item">
+        <div class="city-info-description">Állam </div>
+        <div class="city-info">{{item.state}}</div>
+      </div>
+      <div class="city-info-item">
+        <div class="city-info-description">Hosszúsági fok</div>
+        <div class="city-info">{{ item.longitude }}</div>
+      </div>
+      <div class="city-info-item">
+        <div class="city-info-description">Szélességi fok</div>
+        <div class="city-info">{{ item.latitude }}</div>
+      </div>
+      <button class="target-button">Ezt keresem</button>
+    </div>
+
+  </div>
+
+</div>
