@@ -1,4 +1,4 @@
-<app-city (sendUserText)="handleUserText($event)"
+<app-city (citySearch)="handleCitySearch($event)"
 [cityInfo]="cityInfosFromServer$ | async"
 (sendLongAndLat)="handleCoordination($event)"
 >

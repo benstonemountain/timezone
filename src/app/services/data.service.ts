@@ -25,10 +25,10 @@ export class DataService {
     return this.httpClient.get<CityData[]>(`${this.basicAPIUrl}${this.endpoint}${cityName}`, { headers });
   }
 
-  fetchWeatherInfo(long: number, lat: number ) {
- 
-    console.log(long, lat);
+  fetchWeatherInfo(coord: {long: number, lat: number }) {
+    
+    console.log(coord.long, coord.lat);
 
-   return this.httpClient.get<WeatherInfo>(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${this.openWeatherApiKey}&units=metric&lang=hu`);
+   return this.httpClient.get<WeatherInfo>(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.long}&appid=${this.openWeatherApiKey}&units=metric&lang=hu`);
   }
 }

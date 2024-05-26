@@ -33,8 +33,8 @@ export class StateService {
 
   }
 
-  getWeatherData(long: number, lat: number) {
-      this.dataService.fetchWeatherInfo(long, lat) 
+  getWeatherData(coord: {long: number, lat: number }) {
+      this.dataService.fetchWeatherInfo(coord) 
       .subscribe({
         next: (res) => {
           console.log(res);

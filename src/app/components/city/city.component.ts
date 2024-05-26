@@ -11,7 +11,8 @@ export class CityComponent {
 
   textByUser: string  = "";
 
-  @Output() sendUserText = new EventEmitter<string>();
+  @Output() citySearch
+   = new EventEmitter<string>();
   @Output() sendLongAndLat = new EventEmitter<{long: number, lat: number}>();
 
   @Input() cityInfo: CityData[] | null = [];
@@ -27,7 +28,8 @@ export class CityComponent {
     if(cityControl) {
       //ha nem ír be semmit a user, nem fut le
       console.log(cityControl);
-      this.sendUserText.emit(cityControl);
+      this.citySearch
+      .emit(cityControl);
     }
      
   }

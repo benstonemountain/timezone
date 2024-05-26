@@ -6,32 +6,24 @@ import { CityData, WeatherInfo } from '../../model/models.interface';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-
 export class HomeComponent {
-
-  textFromUser: string = "";
-  longitudeAndLatitudeFromUser!: { long: number, lat: number };
-
   cityInfosFromServer$!: Observable<CityData[] | null>;
-  weatherInfoFromServer$!:Observable<WeatherInfo | null>;
+  weatherInfoFromServer$!: Observable<WeatherInfo | null>;
 
-  constructor( private stateService: StateService) {}
+  constructor(private stateService: StateService) {}
 
-  handleUserText(cityName: string) {
-    this.textFromUser = cityName
-    this.stateService.getCityInfos(this.textFromUser);    
+  ngOnInit() {
     this.cityInfosFromServer$ = this.stateService.cityInfos$;
-  }
-
-  handleCoordination(coordinations: { long: number, lat: number }) {
-    this.longitudeAndLatitudeFromUser = coordinations;
-    const {long, lat} = this.longitudeAndLatitudeFromUser;
-    this.stateService.getWeatherData(long, lat);
     this.weatherInfoFromServer$ = this.stateService.weatherInfo$;
   }
 
+  handleCitySearch(cityName: string) {
+    this.stateService.getCityInfos(cityName);
+  }
 
-
+  handleCoordination(coordinations: { long: number; lat: number }) {
+    this.stateService.getWeatherData(coordinations);
+  }
 }
