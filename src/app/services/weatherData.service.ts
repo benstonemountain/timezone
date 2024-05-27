@@ -17,6 +17,7 @@ export class WeatherDataService {
     
     console.log(coord.long, coord.lat);
 
-   return this.httpClient.get<WeatherInfo>(`${this.basicApiUrl}2.5/weather?lat=${coord.lat}&lon=${coord.long}&appid=${this.openWeatherApiKey}&units=metric`);
+   return this.httpClient.get<WeatherInfo>
+   (`${this.basicApiUrl}2.5/weather?lat=${coord.lat}&lon=${coord.long}&appid=${this.openWeatherApiKey}&units=metric&lang=hu`);
   }
 }

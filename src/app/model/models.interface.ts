@@ -24,5 +24,8 @@ export interface WeatherInfo {
       };
       timezone: number;
       visibility: number;
+      weather: [{icon: string, description: string}];
       wind: { speed: number; deg: number };
 }
+
+
