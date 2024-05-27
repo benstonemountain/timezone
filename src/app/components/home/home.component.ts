@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StateService } from '../../services/state.service';
+import { CityStateService } from '../../services/cityState.service';
 import { CityData, WeatherInfo } from '../../model/models.interface';
+import { WeatherStateService } from '../../services/weatherState.service';
 
 @Component({
   selector: 'app-home',
@@ -12,18 +13,18 @@ export class HomeComponent {
   cityInfosFromServer$!: Observable<CityData[] | null>;
   weatherInfoFromServer$!: Observable<WeatherInfo | null>;
 
-  constructor(private stateService: StateService) {}
+  constructor(private cityStateService: CityStateService, private weatherStateService: WeatherStateService) {}
 
   ngOnInit() {
-    this.cityInfosFromServer$ = this.stateService.cityInfos$;
-    this.weatherInfoFromServer$ = this.stateService.weatherInfo$;
+    this.cityInfosFromServer$ = this.cityStateService.cityInfos$;
+    this.weatherInfoFromServer$ = this.weatherStateService.weatherInfo$;
   }
 
   handleCitySearch(cityName: string) {
-    this.stateService.getCityInfos(cityName);
+    this.cityStateService.getCityInfos(cityName);
   }
 
   handleCoordination(coordinations: { long: number; lat: number }) {
-    this.stateService.getWeatherData(coordinations);
+    this.weatherStateService.getWeatherData(coordinations);
   }
 }
