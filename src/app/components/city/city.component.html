@@ -3,7 +3,7 @@
     <div class="inputs">
       <label for="city-search">
         Város:
-        <input type="text" id="city-search" formControlName="cityControl" />
+        <input type="text" id="city-search" formControlName="cityControl" (keydown.enter)="oncitySearch()"/>
       </label>
     </div>
     <button (click)="oncitySearch()">Keres</button>
