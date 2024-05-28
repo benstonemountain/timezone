@@ -11,28 +11,18 @@
 
   <div *ngIf="cityInfo && cityInfo.length > 0" class="city-infos-wrap">
 
+    <div class="city-infos-header">
+      <div class="city-info-description">Város</div>
+      <div class="city-info-description">Ország </div>
+      <div class="city-info-description">Állam </div>
+      <div class="city-info-description"></div>
+    </div>
+
     <div *ngFor="let item of cityInfo" class="city-infos">
-      <div class="city-info-item">
-        <div class="city-info-description">Város </div>
         <div class="city-info">{{ item.name }}</div>
-      </div>
-      <div class="city-info-item">
-        <div class="city-info-description">Ország </div>
         <div class="city-info">{{ item.country }}</div>
-      </div>
-      <div class="city-info-item">
-        <div class="city-info-description">Állam </div>
         <div class="city-info">{{item.state}}</div>
-      </div>
-      <div class="city-info-item">
-        <div class="city-info-description">Hosszúsági fok</div>
-        <div class="city-info">{{ item.longitude }}</div>
-      </div>
-      <div class="city-info-item">
-        <div class="city-info-description">Szélességi fok</div>
-        <div class="city-info">{{ item.latitude }}</div>
-      </div>
-      <button class="target-button" (click)="onSendCoordination(item.longitude, item.latitude)">Ezt keresem</button>
+      <button class="target-button city-info" (click)="onSendCoordination(item.longitude, item.latitude)">Ezt keresem</button>
     </div>
 
   </div>
