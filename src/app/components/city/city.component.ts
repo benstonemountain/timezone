@@ -15,7 +15,7 @@ export class CityComponent {
    = new EventEmitter<string>();
   @Output() sendLongAndLat = new EventEmitter<{long: number, lat: number}>();
 
-  @Input() cityInfo: CityData[] | null = [];
+  @Input() cityInfo: CityData[] | null = null;
 
   cityForm = this.formBuilder.group({
     cityControl: ['', [Validators.required]]
