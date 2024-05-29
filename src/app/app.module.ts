@@ -8,13 +8,15 @@ import { CityComponent } from './components/city/city.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CityComponent,
-    WeatherComponent
+    WeatherComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

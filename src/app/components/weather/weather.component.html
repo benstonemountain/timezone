@@ -2,8 +2,8 @@
 
 <div *ngIf="weatherInfo">
   <h3>Weather Information for {{ weatherInfo.name }}</h3>
-  <p>Temperature: {{ weatherInfo.main.temp}}°C</p>
-  <p>Feels like: {{ weatherInfo.main.feels_like }}°C</p>
+  <p>Temperature: {{ weatherInfo.main.temp.toFixed(1)}}°C</p>
+  <p>Feels like: {{ weatherInfo.main.feels_like.toFixed(1) }}°C</p>
   <div> Clouds: {{weatherInfo.clouds.all}}%
     <span *ngFor="let w of weatherInfo.weather">
       <span>Description: {{w.description}}</span>
@@ -15,10 +15,10 @@
   <p>Pressure: {{ weatherInfo.main.pressure }} hPa</p>
 
 
-  <p>Wind Speed: {{convertWindSpeed(weatherInfo.wind.speed) }} km/h
+  <p>Wind Speed: {{convertWindSpeed(+weatherInfo.wind.speed.toFixed(1)) }} km/h
   ({{getWindSpeedExplanation(convertWindSpeed(weatherInfo.wind.speed))}})
   </p>
-  <p>Wind Direction: {{ weatherInfo.wind.deg }}°{{getWindDirection(weatherInfo.wind.deg)}}</p>
+  <p>Wind Direction: {{ weatherInfo.wind.deg }}° ({{getWindDirection(weatherInfo.wind.deg)}})</p>
   <p>Country Code: {{ weatherInfo.sys.country }}</p>
   <p>Timezone: {{ getUtcOffsetString(weatherInfo.timezone) }}</p>
   <p>Sunrise: {{ weatherInfo.sys.sunrise }}</p>

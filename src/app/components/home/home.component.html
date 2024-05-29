@@ -4,6 +4,8 @@
 >
 </app-city>
 
+<app-spinner [spin]="loading" *ngIf="loading$ | async"></app-spinner>
+
 <app-weather [weatherInfo]="weatherInfoFromServer$ | async"></app-weather>
 
 

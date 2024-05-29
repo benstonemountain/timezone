@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Subject, catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { CityData, WeatherInfo } from '../model/models.interface';
 import { CityDataService } from './cityData.service';
@@ -13,23 +13,15 @@ export class CityStateService {
   private _cityInfos = new BehaviorSubject<CityData[] | null>(null);
   readonly cityInfos$ = this._cityInfos.asObservable();
 
+  private _loadingSubject = new Subject<boolean>();
+  readonly loading$ = this._loadingSubject.asObservable();
+
+
   constructor(private cityDataService: CityDataService) { }
 
-    // getCityInfos(city: string) {
-    //   this.cityDataService.fetchCityInfos(city)
-    //   .subscribe({
-    //     next: (res) => {
-    //       console.log(res);
-    //       this._cityInfos.next(res);
-    //     },
-    //     error: (err) => {
-    //       console.error(err);
-    //       this._cityInfos.next(null);
-    //     }
-    //   })
-    // }
-
+ 
     getCityInfos(city: string) {
+      this._loadingSubject.next(true);
       this.cityDataService.fetchCityInfos(city)
         .pipe(
           switchMap((cityData: CityData[]) => {
@@ -54,6 +46,7 @@ export class CityStateService {
         )
         .subscribe((cityData: CityData[]) => {
           this._cityInfos.next(cityData);
+          this._loadingSubject.next(false);
         });
     }
 

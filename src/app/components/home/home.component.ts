@@ -12,8 +12,13 @@ import { WeatherStateService } from '../../services/weatherState.service';
 export class HomeComponent {
   cityInfosFromServer$!: Observable<CityData[] | null>;
   weatherInfoFromServer$!: Observable<WeatherInfo | null>;
+  loading = false;
+  loading$!: Observable<boolean>;
 
-  constructor(private cityStateService: CityStateService, private weatherStateService: WeatherStateService) {}
+  constructor(private cityStateService: CityStateService,
+    private weatherStateService: WeatherStateService,) {
+      this.loading$ = this.cityStateService.loading$;
+    }
 
   ngOnInit() {
     this.cityInfosFromServer$ = this.cityStateService.cityInfos$;

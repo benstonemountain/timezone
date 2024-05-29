@@ -28,12 +28,17 @@ export class CityDataService {
   }
 
   fetchCountryNames(countryCodes: string[]): Observable<{ [key: string]: string }> {
+    const countryCodeApiHeaders = new HttpHeaders({
+      'apikey': '1yolIKwrkx7bRrqJhzlOGpAQGsUGLrGl'
+    });
+
     const requests = countryCodes.map(code => {
+      const url = `${this.countryCodeBasicApiUrl}${code.toLowerCase()}`;
       console.log(`Fetching country name for code: ${code.toLowerCase()}`);
-      return this.httpClient.get<{ name: { common: string } }[]>(`${this.countryCodeBasicApiUrl}${code.toLowerCase()}`).pipe(
+      return this.httpClient.get<{ name: string }[]>(url, { headers: countryCodeApiHeaders }).pipe(
         map(response => {
           console.log(`Response for code ${code}:`, response);
-          return { [code]: response[0].name.common };
+          return { [code]: response[0]?.name || 'Unknown' };
         }),
         catchError(error => {
           console.error(`Error fetching country name for code ${code}:`, error);
@@ -41,8 +46,9 @@ export class CityDataService {
         })
       );
     });
+
     return forkJoin(requests).pipe(
       map(responses => responses.reduce((acc, cur) => ({ ...acc, ...cur }), {}))
     );
-  }
+}
 }
