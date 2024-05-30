@@ -1,22 +1,69 @@
 <div class="city-wrap">
-  <form [formGroup]="cityForm">
-    <div class="inputs">
-      <label for="city-search">
-        Város:
-        <input type="text" id="city-search" formControlName="cityControl" (keydown.enter)="oncitySearch()"/>
-      </label>
-    </div>
-    <button (click)="oncitySearch()">Keres</button>
-  </form>
+	<form class="city-search-form" [formGroup]="cityForm">
+		<div class="inputs">
+			<input
+				type="text"
+				id="city-search-inputfield"
+				placeholder="Enter a city name..."
+				formControlName="cityControl"
+				(keydown.enter)="oncitySearch()"
+			/>
 
-  <div *ngIf="cityInfo && cityInfo.length > 0" class="city-infos-wrap">
+			<button class="city-search-button" (click)="oncitySearch()">Search</button>
+		</div>
+	</form>
 
-    <div class="city-infos-header">
-      <div class="city-info-description">Város</div>
-      <div class="city-info-description">Ország </div>
-      <div class="city-info-description">Állam </div>
-      <div class="city-info-description"></div>
-    </div>
+	<div class="city-card-wrap">
+
+		<div class="city-card">
+			<div class="city-card-container">
+				<div class="city-name city-info-item">Village of Lima</div>
+				<div class="country city-info-item">
+					United Kingdom of Great Britain and Northern Ireland
+				</div>
+				<div class="state city-info-item">Gilan Province</div>
+			</div>
+
+			<div class="confirm-button "><button>Ezt keresem</button></div>
+
+		</div>
+
+		<div class="city-card">
+			<div class="city-card-container">
+				<div class="city-name city-info-item">Lima</div>
+				<div class="city-country city-info-item">Peru</div>
+				<div class="city-state city-info-item">-</div>
+			</div>
+			<div class="confirm-button "><button>Ezt keresem</button></div>
+		</div>
+		<div class="city-card">
+			<div class="city-card-container">
+				<div class="city-name city-info-item">Akármi Lima</div>
+				<div class="city-country city-info-item">Republic of the Iran</div>
+				<div class="city-state city-info-item">Gilan Province</div>
+			</div>
+			<div class="confirm-button "><button>Ezt keresem</button></div>
+		</div>
+		<div class="city-card">
+			<div class="city-card-container">
+				<div class="city-name city-info-item">Lima</div>
+				<div class="city-country city-info-item">Peru</div>
+				<div class="city-state city-info-item">X Province</div>
+			</div>
+			<div class="confirm-button "><button>Ezt keresem</button></div>
+		</div>
+		<div class="city-card">
+			<div class="city-card-container">
+				<div class="city-name city-info-item">Lima</div>
+				<div class="city-country city-info-item">Peru</div>
+				<div class="city-state city-info-item">X Province</div>
+			</div>
+			<div class="confirm-button "><button>Ezt keresem</button></div>
+		</div>
+	</div>
+
+	<!-- <div *ngIf="cityInfo && cityInfo.length > 0" class="city-card-wrap">
+
 
     <div *ngFor="let item of cityInfo" class="city-infos">
         <div class="city-info">{{ item.name }}</div>
@@ -25,6 +72,5 @@
       <button class="target-button city-info" (click)="onSendCoordination(item.longitude, item.latitude)">Ezt keresem</button>
     </div>
 
-  </div>
-
+  </div> -->
 </div>

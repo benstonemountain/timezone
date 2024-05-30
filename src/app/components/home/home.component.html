@@ -1,3 +1,6 @@
+<app-header></app-header>
+
+
 <app-city (citySearch)="handleCitySearch($event)"
 [cityInfo]="cityInfosFromServer$ | async"
 (sendLongAndLat)="handleCoordination($event)"

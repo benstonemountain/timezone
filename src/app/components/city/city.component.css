@@ -1,43 +1,193 @@
-.city-infos-wrap {
-	width: 600px;
+.city-search-form {
+	position: relative;
+	font-weight: bold;
+	width: 320px;
+	height: 100px;
+	margin: 0 auto 20px;
+	padding: 3px;
+	/* box-shadow: 0 2px 6px rgb(0 0 0 / 0.2); */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: url('../../../assets/pics/citybg_small.jpg');
+	background-position: 50% 15%;
+	background-repeat: no-repeat;
+}
+
+.inputs {
+	width: 70%;
+	height: 90%;
 	margin: 0 auto;
+}
+
+#city-search-inputfield {
+	width: 150px;
+	height: 25px;
+	background-color: rgba(255, 255, 255, 0.1);
+	/* opacity: 0.4; */
+	border-radius: 2px;
+	outline: none;
+	position: absolute;
+	left: calc(50% - 75px);
+	border: 1px solid rgb(148, 147, 147);
+	background-clip: padding-box;
+}
+
+#city-search-inputfield::placeholder {
+	color: rgb(73, 73, 73);
+	opacity: 1;
+}
+#city-search-inputfield:focus {
+	background-color: rgba(255, 255, 255, 0.1);
+	outline: none;
+}
+
+.city-search-button {
+	width: 100px;
+	height: 25px;
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	font-weight: bold;
+	border: none;
+	border-radius: 2px;
+	font-size: 1.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(
+		0deg,
+		rgba(20, 167, 62, 1) 0%,
+		rgba(102, 247, 113, 1) 100%
+	);
+	opacity: 0.8;
+	outline: none;
+	cursor: pointer;
+	transition: transform 0.1s;
+}
+
+.city-search-button:hover {
+	background: rgb(134, 248, 134);
+}
+
+.city-search-button:active {
+	transform: scale(0.98);
+}
+
+/* CITY INFOS AFTER CLICK */
+
+.city-card-wrap {
+	width: 320px;
+	margin: 10px auto;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.city-infos-header {
-	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+.city-card {
+	width: 300px;
+	height: 220px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: #CCDEFC;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.city-infos-header
-.city-info-description {
-	border-right: 1px solid rgb(169, 169, 169);
+.city-card-container {
+	width: 83%;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.city-info-item {
+	background: linear-gradient(to left, #373b44, #4286f4);
+	color: white;
+	border: 1px solid rgb(66, 66, 250);
+	min-height: 40px;
+	padding: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 }
 
- .city-infos {
-	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-}
-
-.city-infos:nth-child(1), .city-infos:nth-child(2) {
-	border-right: 1px solid rgb(169, 169, 169);
-}
-
-.city-info {
-	padding: 5px;
-	text-align: center;
-}
-
-
-.target-button {
+.confirm-button button {
 	display: block;
-	width: 140px;
+	width: 120px;
 	height: 30px;
-	padding: 0;
-	margin: 0 auto;
-} 
+	border: none; 
+	border-radius: 5px;
+	transition: all 0.3s ease;
+	box-shadow: 0 5px 0 #99B8E6, 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-button button:hover {
+	background-color: #B4C9F8; 
+	color: white;
+	box-shadow: 0 2px 0 #99B8E6, 0 5px 10px rgba(0, 0, 0, 0.2); 
+	transform: translateY(3px); 
+}
+.confirm-button button:active {
+	box-shadow: 0 0 0 #99B8E6, 0 2px 5px rgba(0, 0, 0, 0.2); 
+	transform: translateY(5px);
+}
+
+
+/* MEDIA QUERY */
+
+
+@media  (min-width: 680px) {
+
+	.city-search-form {
+		width: 640px;
+		width: 100%;
+		background: url('../../../assets/pics/citybg.jpg');
+		background-size:cover;
+		background-position: 50% 30%;
+	}
+	
+	#city-search-inputfield {
+			color: white;
+			width: 200px;
+			height: 30px;
+			left: calc(50% - 100px);
+	}
+
+	#city-search-inputfield::placeholder {
+		color: white;
+		opacity: 1;
+		text-align: center;
+	}
+
+	.city-search-button {
+			bottom: 20px;
+			right: calc(50% - 50px);
+	}
+
+	.city-card-wrap {
+		width: 680px;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+}
+
+@media  (min-width: 1200px) {
+
+	.city-card-wrap {
+		width: 80%;
+		padding: 20px 0;
+		
+	}
+
+}
+
+
+
 
 

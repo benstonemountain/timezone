@@ -10,13 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CityComponent,
     WeatherComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    
   ],
   imports: [
     BrowserModule,
