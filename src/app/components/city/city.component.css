@@ -10,7 +10,7 @@
 	flex-direction: column;
 	justify-content: center;
 	background: url('../../../assets/pics/citybg_small.jpg');
-	background-position: 50% 15%;
+	background-position: 50% 30%;
 	background-repeat: no-repeat;
 }
 
@@ -146,8 +146,10 @@
 		width: 640px;
 		width: 100%;
 		background: url('../../../assets/pics/citybg.jpg');
-		background-size:cover;
+		background-size: cover;
 		background-position: 50% 30%;
+
+	
 	}
 	
 	#city-search-inputfield {
