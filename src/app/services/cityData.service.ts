@@ -35,7 +35,11 @@ export class CityDataService {
     const requests = countryCodes.map(code => {
       const url = `${this.countryCodeBasicApiUrl}${code.toLowerCase()}`;
       console.log(`Fetching country name for code: ${code.toLowerCase()}`);
-      return this.httpClient.get<{ name: string }[]>(url, { headers: countryCodeApiHeaders }).pipe(
+    
+      return this.httpClient.get<{ name: string }[]>(url, { headers: countryCodeApiHeaders })
+        //kitenni egy külön data service-be/metódusba 
+      
+      .pipe(
         map(response => {
           console.log(`Response for code ${code}:`, response);
           return { [code]: response[0]?.name || 'Unknown' };
@@ -47,6 +51,7 @@ export class CityDataService {
       );
     });
 
+    //forJoin fog subscribe-olni 
     return forkJoin(requests).pipe(
       map(responses => responses.reduce((acc, cur) => ({ ...acc, ...cur }), {}))
     );
